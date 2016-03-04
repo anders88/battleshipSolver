@@ -13,20 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class Solver {
-
-    public List<String> calculateAnswer(List<String> questions) {
-        List<String> answers = new ArrayList<>();
-        for (String q : questions) {
-            answers.add(echo(q));
-        }
-        return answers;
-    }
-
-    public static String echo(String q) {
-        return q;
-    }
-}
 
 public class BattleshipSolver {
 

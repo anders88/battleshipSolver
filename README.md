@@ -40,7 +40,6 @@ You fire shots against a grid in order to sink all five ship. The grid has 20X20
 
 # Example board
 
-## Battleship
 
 |   |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |10 |11 |12 |13 |14 |15 |16 |17 |18 |19 | 
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -64,3 +63,16 @@ You fire shots against a grid in order to sink all five ship. The grid has 20X20
 | 17|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | 18|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | 19|   |   |   |   |   |   |x  |  x|   |   |   |   |   |   |   |   |   |   |   |   |
+
+## How to play
+First you register as a player on the website. You will then be given a player id. For the first round you will have 20 shots. In order to shots you do a http post against the address (server-adress)/game/shoot. The content of the post will be an json array containing coordinates. So if you want to fire on x=1,y=3 and x=4,y=8 you will post 
+```json
+[[1 3][4 8]]
+```
+
+The result of the post will be a json:
+```json
+{"hits":[[8,3],[9,3],[10,3],[17,3]],"shotsNextRound":11,"roundsCompleted":5,"gameFinished":false}
+```
+
+You will receive any coordinates of hits. If you have hit all target the gameFinished will be true. You will then start again with a new board and 20 shots next round.
